@@ -22,10 +22,10 @@ class CardRepository
         // TODO: create new data
         $submitCar = isset($_POST['addCar']) && !empty($_POST['name'])  && !empty($_POST['price']) && !empty($_POST['engine']) && !empty($_POST['topspeed']);
             if (!$submitCar){
-                $this->find();
-            }
-
-            
+                $sql = "INSERT INTO supercars(name,price,engine,topspeed) VALUES('$addName','$addPrice','$addEngine','$addTopspeed')";
+                $result = $this->databaseManager->connection->query($sql)->fetchAll();
+                return $result;
+            }          
     }
 
     // Get one
