@@ -15,7 +15,17 @@ class CardRepository
 
     public function create()
     {
+        $addName = $_POST['name'];
+        $addPrice = $_POST['price'];
+        $addEngine = $_POST['engine'];
+        $addTopspeed = $_POST['topspeed'];
+        // TODO: create new data
+        $submitCar = isset($_POST['addCar']) && !empty($_POST['name'])  && !empty($_POST['price']) && !empty($_POST['engine']) && !empty($_POST['topspeed']);
+            if (!$submitCar){
+                $this->find();
+            }
 
+            
     }
 
     // Get one
@@ -27,11 +37,12 @@ class CardRepository
     // Get all
     public function get()
     {
+        $sql = 'SELECT * FROM supercars';
         // TODO: replace dummy data by real one
-        return [
-            ['name' => 'dummy one'],
-            ['name' => 'dummy two'],
-        ];
+         return $this->databaseManager->connection->query($sql);
+
+        // return $result;
+        
 
         // We get the database connection first, so we can apply our queries with it
         // return $this->databaseManager->connection-> (runYourQueryHere)
