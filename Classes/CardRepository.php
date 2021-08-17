@@ -24,7 +24,7 @@ class CardRepository
         if(isset($_POST['addCar']) && !empty($_POST['name'])  && !empty($_POST['price']) && !empty($_POST['engine']) && !empty($_POST['topspeed'])){
             $sql = "INSERT INTO supercars(name,price,engine,topspeed) VALUES('$addName','$addPrice','$addEngine','$addTopspeed')";
             $result = $this->databaseManager->connection->query($sql);
-            echo '✅ <i>vroom vroom</i> Supercar has been added to the database ! ';
+            echo '✅ <i><b>vroom vroom</b></i> Supercar has been added to the database ! ';
             return $result;
 
         } else {
@@ -54,12 +54,34 @@ class CardRepository
 
     public function update()
     {
+        //Variables update
+        $dataId = $_GET["updateID"];
+        $updateName = $_POST["updateName"];
+        $updatePrice = $_POST["updatePrice"];
+        $updateEngine = $_POST["updateEngine"];
+        $updateTopspeed = $_POST["updateTopspeed"];
 
+        // TODO: update information
+        if(isset($_POST['UpdateCars']) && !empty($_POST['updateName'])  && !empty($_POST['updatePrice']) && !empty($_POST['updateEngine']) && !empty($_POST['updateTopspeed'])){
+            $sqlUpdate = "UPDATE supercars SET '$updateName', '$updatePrice', '$updateEngine', '$updateTopspeed' WHERE 'id' = '$dataId'";
+            $result = $this->databaseManager->connection->query($sql);
+            echo '🆕 Update of the car(s) has been made ! ';
+            return $result;
+
+        } else {
+            echo '⛔ Please fill in all the information.';
+        }    
     }
 
     public function delete()
     {
+        // if(isset($_POST['UpdateCars']) && !empty($_POST['updateName'])  && !empty($_POST['updatePrice']) && !empty($_POST['updateEngine']) && !empty($_POST['updateTopspeed'])){
+        //     $sqlUpdate = "DELETE FROM supercars WHERE id = '$dataId'";
+        //     $result = $this->databaseManager->connection->query($sql);
+        //     echo '❌ Supercar has been deleted ! ';
+        //     return $result;
 
+        // }
     }
 
 }

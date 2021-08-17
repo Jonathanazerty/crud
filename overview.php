@@ -13,7 +13,9 @@
 
 <ul>
     <?php foreach ($cards as $card) : ?>
-        <li><?= " Id: " . $card['id'] . " <br>Name of the car: " . $card['name'] . "🏷️" . " <br>Price : " . $card['price'] . "$ 💰" . " <br>Type of engine : " . $card['engine'] . "⚙️" . "<br>Topspeed : " . $card['topspeed'] . "km/u 🏁"?></li>
+        <?= "<li><br> <b>Id:</b> " . $card['id'] . " <br><b>Name of the car:</b> " . $card['name'] . "🏷️" . " <br><b>Price :</b> " . $card['price'] . "$ 💰" . " <br><b>Type of engine :</b> " . $card['engine'] . "⚙️" . "<br><b>Topspeed :</b> " . $card['topspeed'] . "km/u 🏁</li>"?>
+        <a href="index.php?selectedCar=<?= $card['name']; ?>&action=update" class="update" id="update">Edit Supercar 🏎</a><br>
+        <a href="index.php?selectedCar=<?= $card['name']; ?>&action=delete" class="delete" id="delete">Delete Supercar 🏎</a>
     <?php endforeach; ?>
 </ul>
 <br>
