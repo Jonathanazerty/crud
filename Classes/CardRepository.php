@@ -19,13 +19,17 @@ class CardRepository
         $addPrice = $_POST['price'];
         $addEngine = $_POST['engine'];
         $addTopspeed = $_POST['topspeed'];
+
         // TODO: create new data
-        $submitCar = isset($_POST['addCar']) && !empty($_POST['name'])  && !empty($_POST['price']) && !empty($_POST['engine']) && !empty($_POST['topspeed']);
-            if (!$submitCar){
-                $sql = "INSERT INTO supercars(name,price,engine,topspeed) VALUES('$addName','$addPrice','$addEngine','$addTopspeed')";
-                $result = $this->databaseManager->connection->query($sql)->fetchAll();
-                return $result;
-            }          
+        if(isset($_POST['addCar']) && !empty($_POST['name'])  && !empty($_POST['price']) && !empty($_POST['engine']) && !empty($_POST['topspeed'])){
+            $sql = "INSERT INTO supercars(name,price,engine,topspeed) VALUES('$addName','$addPrice','$addEngine','$addTopspeed')";
+            $result = $this->databaseManager->connection->query($sql);
+            echo '✅ <i>vroom vroom</i> Supercar has been added to the database ! ';
+            return $result;
+
+        } else {
+            echo '⛔ Please fill in all the information.';
+        }    
     }
 
     // Get one
