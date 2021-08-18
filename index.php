@@ -12,7 +12,7 @@ error_reporting(E_ALL);
 require_once 'config.php';
 require_once 'classes/DatabaseManager.php';
 require_once 'classes/CardRepository.php';
-require_once 'edit.php';
+// require_once 'edit.php';
 // require_once 'delete.php';
 
 session_start();
@@ -43,7 +43,6 @@ $databaseManager->connect();
 $cardRepository = new CardRepository($databaseManager);
 $createCars = $cardRepository->create();
 $cards = $cardRepository->get();
-$updateCars = $cardRepository->update();
 // $deleteCars = $cardRepository->delete();
 
 if(empty($_GET)){

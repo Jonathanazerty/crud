@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update <?= $_GET['edit'] ?></title>
+    <title>Update</title>
 </head>
 <body>
-    <form action="index.php?edit=<?= $_GET['edit'] ?>" method="post"><h2><b>UPDATE SUPERCAR</b></h2>
+    <form action="" method="post"><h2><b>UPDATE SUPERCAR</b></h2>
     <br>
-        <label for="id">Update ID</label>
-        <input type="text" name="updateID" placeholder="Update ID here 🏷️"><br><br>
         <label for="name">Update name</label>
         <input type="text" name="updateName" placeholder="Update name here 🏷️"><br><br>
         <label for="price">Update price</label>
@@ -23,3 +21,18 @@
     </form>
 </body>
 </html>
+<?php
+
+if (isset($_POST['UpdateCars'])){
+    if(isset($_POST['UpdateCars']) && !empty($_POST['updateName'])  && !empty($_POST['updatePrice']) && !empty($_POST['updateEngine']) && !empty($_POST['updateTopspeed'])){
+        $cardRepository->update($_POST['updateName'], $_POST['updatePrice'], $_POST['updateEngine'], $_POST['updateTopspeed'], $_GET['selectedCar']);
+        echo '🆕 Update of the car(s) has been made ! ';
+
+        ?> <br> <a href="index.php"> Go back to the overview </a>
+        <?php
+
+    } else {
+        echo '⛔ Please fill in all the information.';
+    }
+}
+?>
