@@ -43,12 +43,13 @@ $databaseManager->connect();
 $cardRepository = new CardRepository($databaseManager);
 $createCars = $cardRepository->create();
 $cards = $cardRepository->get();
-// $deleteCars = $cardRepository->delete();
 
 if(empty($_GET)){
     require 'overview.php';
-} else {
+} else if ($_GET['action'] == 'update'){
     require 'edit.php';
+} else {
+    require 'delete.php';
 }
 
 // Load your view

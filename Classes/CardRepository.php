@@ -54,23 +54,22 @@ class CardRepository
         // return $this->databaseManager->connection-> (runYourQueryHere)
     }
 
-    public function update($updateName, $updatePrice, $updateEngine, $updateTopspeed, $oldName) : void
+    public function update($updateName, $updatePrice, $updateEngine, $updateTopspeed, $oldName)
     {
         //Variables update
-        // TODO: update information
+        // TODO: update car
             $sqlUpdate = "UPDATE supercars SET name = '$updateName', price = '$updatePrice', engine = '$updateEngine', topspeed = '$updateTopspeed' WHERE name = '$oldName'";
-            $this->databaseManager->connection->query($sqlUpdate);
+            $result = $this->databaseManager->connection->query($sqlUpdate);
+            return $result;
     }
 
-    public function delete()
+    public function delete(string $oldName)
     {
-        // if(isset($_POST['UpdateCars']) && !empty($_POST['updateName'])  && !empty($_POST['updatePrice']) && !empty($_POST['updateEngine']) && !empty($_POST['updateTopspeed'])){
-        //     $sqlUpdate = "DELETE FROM supercars WHERE id = '$dataId'";
-        //     $result = $this->databaseManager->connection->query($sql);
-        //     echo '❌ Supercar has been deleted ! ';
-        //     return $result;
+        //TODO: delete car
+            $sqlDelete = "DELETE FROM supercars WHERE name = '$oldName'";
+            $result = $this->databaseManager->connection->query($sqlDelete);
+            return $result;
 
-        // }
+        }
     }
 
-}

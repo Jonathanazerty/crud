@@ -9,17 +9,21 @@
 <body>
     <form action="" method="post"><h2><b>DELETE SUPERCAR</b></h2>
     <br>
-        <label for="id">Do you want to delete this supercar? </label>
-        <input type="text" name="deleteCar" placeholder="This will be deleted"><br><br>
+        <label for="id">Do you want to delete this supercar? </label><br><br>
         <button type="submit" name="deleteCar"> Delete 🏎 ❌</button>
-        <br> <a href="overview.php"> Go back to the overview</a>
     </form>
 
     <?php
-    if (isset($_POST['deleteCar'])) {
-        $cardRepository->delete($_GET['selectedCar']);
-        echo "❌ The Supercar has been deleted! ❌";
-    }
+    // TODO: create if / else statement for an update 
+    if (isset($_POST['deleteCar'])){
+        if(isset($_POST['deleteCar'])){
+            $cardRepository->delete($_GET['selectedCar']);
+            echo '❌ Supercar has been deleted ! ';
+            }
+        }
+
+        ?> <br> <a href="index.php"> Go back to the overview </a>
+        <?php
     ?>
 
 </body>

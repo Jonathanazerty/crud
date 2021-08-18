@@ -21,18 +21,20 @@
     </form>
 </body>
 </html>
+
 <?php
 
-if (isset($_POST['UpdateCars'])){
-    if(isset($_POST['UpdateCars']) && !empty($_POST['updateName'])  && !empty($_POST['updatePrice']) && !empty($_POST['updateEngine']) && !empty($_POST['updateTopspeed'])){
-        $cardRepository->update($_POST['updateName'], $_POST['updatePrice'], $_POST['updateEngine'], $_POST['updateTopspeed'], $_GET['selectedCar']);
-        echo '🆕 Update of the car(s) has been made ! ';
+// TODO: create if / else statement for an update 
+    if (isset($_POST['UpdateCars'])){
+        if(isset($_POST['UpdateCars']) && !empty($_POST['updateName'])  && !empty($_POST['updatePrice']) && !empty($_POST['updateEngine']) && !empty($_POST['updateTopspeed'])){
+            $cardRepository->update($_POST['updateName'], $_POST['updatePrice'], $_POST['updateEngine'], $_POST['updateTopspeed'], $_GET['selectedCar']);
+            echo '🆕 Update of the car(s) has been made ! ';
 
-        ?> <br> <a href="index.php"> Go back to the overview </a>
-        <?php
+            ?> <br> <a href="index.php"> Go back to the overview </a>
+            <?php
 
-    } else {
-        echo '⛔ Please fill in all the information.';
+        } else {
+            echo '⛔ Please fill in all the information.';
+        }
     }
-}
 ?>
